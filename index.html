@@ -1,92 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AGC Gutter Install</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AGC Gutter Install | Seamless Gutters, Guards & Cleaning</title>
+  <meta name="description" content="Family-owned gutter company in Richland, MS. Seamless gutters, premium guards, cleaning & repairs. Backed by strong product warranties and a 1-year service guarantee." />
+  <link rel="icon" href="agc-logo.jpg" />
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>html{scroll-behavior:smooth}</style>
 </head>
-<body class="bg-white">
-  <div id="root"></div>
-  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
-  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-  <script type="text/babel">
-    const { useEffect } = React;
-    function AGCGutterInstallSite() {
-      const handleSubmit = (e) => { e.preventDefault(); alert("Form would send via mailto."); };
-      const scrollToId = (id) => document.getElementById(id)?.scrollIntoView({behavior:"smooth"});
-      return (
-        <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white text-slate-800">
-          <header className="sticky top-0 z-50 backdrop-blur bg-white/70 border-b border-slate-200">
-            <div className="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
-              <span className="inline-flex items-center gap-2">
-                <img src='agc-logo.jpg' alt='AGC Logo' className='h-8 w-auto'/>
-                <span>AGC Gutter Install</span>
-              </span>
-            </div>
-          </header>
-          <section id="work" className="py-20 bg-slate-50">
-            <div className="mx-auto max-w-6xl px-4">
-              <h2 className="text-3xl md:text-4xl font-semibold">Recent Work</h2>
-              <div className="mt-10 grid md:grid-cols-3 gap-6">
-                
-    <div className="rounded-3xl border border-slate-200 bg-white overflow-hidden shadow-sm hover:shadow">
-      <img src="images/gallery/gallery1.jpg" alt="AGC Project" className="w-full h-48 object-cover"/>
-      <div className="p-5">
-        <h3 className="font-semibold">Recent Project</h3>
-        <p className="mt-1 text-sm text-slate-600">Installed seamless gutters & guards.</p>
+<body class="text-slate-800">
+  <!-- Top Bar -->
+  <div class="bg-slate-900 text-white text-sm">
+    <div class="max-w-7xl mx-auto px-4 py-2 flex flex-wrap items-center justify-between gap-3">
+      <span>Family-owned business since 2019 • Licensed • Insured • Free Estimates</span>
+      <div class="flex items-center gap-4">
+        <a href="tel:+16017281748" class="hover:underline">Call: 601-728-1748</a>
+        <a href="#quote" class="inline-flex items-center gap-2 bg-white text-slate-900 px-3 py-1 rounded-lg font-medium">Get a Quote</a>
       </div>
     </div>
-    
-    <div className="rounded-3xl border border-slate-200 bg-white overflow-hidden shadow-sm hover:shadow">
-      <img src="images/gallery/gallery2.jpg" alt="AGC Project" className="w-full h-48 object-cover"/>
-      <div className="p-5">
-        <h3 className="font-semibold">Recent Project</h3>
-        <p className="mt-1 text-sm text-slate-600">Installed seamless gutters & guards.</p>
+  </div>
+
+  <!-- Header / Nav -->
+  <header class="sticky top-0 z-50 bg-white/80 backdrop-blur border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="h-16 flex items-center justify-between">
+        <a href="#home" class="flex items-center gap-3">
+          <img src=\"agc-logo.jpg\" class=\"h-12 w-auto object-contain\" alt=\"AGC Gutter Installs Logo\"/>
+          <span class="font-semibold">AGC Gutter Install</span>
+        </a>
+        <nav class="hidden md:flex items-center gap-6 text-sm">
+          <a href="#services" class="hover:text-slate-900">Services</a>
+          <a href="#why" class="hover:text-slate-900">Why Choose Us</a>
+          <a href="#products" class="hover:text-slate-900">Products</a>
+          <a href="#gallery" class="hover:text-slate-900">Gallery</a>
+          <a href="#reviews" class="hover:text-slate-900">Reviews</a>
+          <a href="#areas" class="hover:text-slate-900">Service Areas</a>
+          <a href="#quote" class="rounded-xl border border-slate-300 px-3 py-1.5 hover:bg-slate-50">Contact</a>
+        </nav>
+        <a href="https://www.facebook.com/AGCgutter?mibextid=LQQJ4d" target="_blank" class="ml-4 hidden md:inline text-blue-600 hover:underline">Facebook</a>
       </div>
     </div>
-    
-    <div className="rounded-3xl border border-slate-200 bg-white overflow-hidden shadow-sm hover:shadow">
-      <img src="images/gallery/gallery3.jpg" alt="AGC Project" className="w-full h-48 object-cover"/>
-      <div className="p-5">
-        <h3 className="font-semibold">Recent Project</h3>
-        <p className="mt-1 text-sm text-slate-600">Installed seamless gutters & guards.</p>
-      </div>
+  </header>
+
+  <!-- Hero -->
+  <section id=\"home\" class=\"relative scroll-mt-24 bg-gradient-to-b from-brand-green/10 to-white\">
+    <div class=\"absolute inset-0 flex items-center justify-center opacity-5 pointer-events-none\">
+      <img src=\"agc-logo.jpg\" alt=\"AGC Logo Background\" class=\"max-w-md w-full h-auto\" />
     </div>
-    
-    <div className="rounded-3xl border border-slate-200 bg-white overflow-hidden shadow-sm hover:shadow">
-      <img src="images/gallery/gallery4.jpg" alt="AGC Project" className="w-full h-48 object-cover"/>
-      <div className="p-5">
-        <h3 className="font-semibold">Recent Project</h3>
-        <p className="mt-1 text-sm text-slate-600">Installed seamless gutters & guards.</p>
-      </div>
-    </div>
-    
-    <div className="rounded-3xl border border-slate-200 bg-white overflow-hidden shadow-sm hover:shadow">
-      <img src="images/gallery/gallery5.jpg" alt="AGC Project" className="w-full h-48 object-cover"/>
-      <div className="p-5">
-        <h3 className="font-semibold">Recent Project</h3>
-        <p className="mt-1 text-sm text-slate-600">Installed seamless gutters & guards.</p>
-      </div>
-    </div>
-    
-    <div className="rounded-3xl border border-slate-200 bg-white overflow-hidden shadow-sm hover:shadow">
-      <img src="images/gallery/gallery6.jpg" alt="AGC Project" className="w-full h-48 object-cover"/>
-      <div className="p-5">
-        <h3 className="font-semibold">Recent Project</h3>
-        <p className="mt-1 text-sm text-slate-600">Installed seamless gutters & guards.</p>
-      </div>
-    </div>
-    
-              </div>
-            </div>
-          </section>
+    <div class="max-w-7xl mx-auto px-4 pt-10 pb-16 grid md:grid-cols-2 gap-10 items-center">
+      <div>
+        <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight">Seamless Gutters & Premium Gutter Guards</h1>
+        <p class="mt-4 text-lg text-slate-600">Protect your roof, fascia and foundation. Professional installs, clean job sites, and a <strong>1-year service warranty</strong>.</p>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a href="tel:+16017281748" class="rounded-2xl bg-slate-900 text-white px-6 py-3 font-medium hover:bg-slate-700">Call Now</a>
+          <a href="#quote" class="rounded-2xl border border-slate-300 px-6 py-3 font-medium hover:bg-slate-50">Request Free Quote</a>
         </div>
-      );
-    }
-    const root = ReactDOM.createRoot(document.getElementById('root'));
-    root.render(<AGCGutterInstallSite/>);
-  </script>
+      </div>
+      <div class="grid grid-cols-2 gap-3">
+        <img src="images/gallery/gallery1.jpg" class="rounded-3xl h-48 md:h-60 w-full object-cover" alt="Gutter Guard"/>
+        <img src="images/gallery/gallery2.jpg" class="rounded-3xl h-48 md:h-60 w-full object-cover" alt="Gutter Guard"/>
+        <img src="images/gallery/gallery3.jpg" class="rounded-3xl h-48 md:h-60 w-full object-cover" alt="Seamless Gutter"/>
+        <img src="images/gallery/gallery4.jpg" class="rounded-3xl h-48 md:h-60 w-full object-cover" alt="Downspout"/>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="scroll-mt-24 border-t border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 py-16">
+      <h2 class="text-3xl font-bold tracking-tight">Our Services</h2>
+      <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="rounded-3xl border border-slate-200 p-6">
+          <h3 class="font-semibold">Seamless Gutters</h3>
+          <p class="mt-2 text-slate-600">Custom 5" and 6" aluminum gutters with a 20-year warranty on coil material.</p>
+        </div>
+        <div class="rounded-3xl border border-slate-200 p-6">
+          <h3 class="font-semibold">Gutter Guards</h3>
+          <p class="mt-2 text-slate-600">Premium LeafBlaster Pro guards with 40-year limited warranty. Aluminum options also available.</p>
+        </div>
+        <div class="rounded-3xl border border-slate-200 p-6">
+          <h3 class="font-semibold">Repairs & Tune‑Ups</h3>
+          <p class="mt-2 text-slate-600">Leak fixes, resealing, hanger upgrades, downspout rerouting.</p>
+        </div>
+        <div class="rounded-3xl border border-slate-200 p-6">
+          <h3 class="font-semibold">Cleaning & Maintenance</h3>
+          <p class="mt-2 text-slate-600">Seasonal cleanings and inspections to extend system life.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products -->
+  <section id="products" class="scroll-mt-24 border-t border-slate-200 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 py-16">
+      <h2 class="text-3xl font-bold tracking-tight">Products & Warranties</h2>
+      <div class="mt-8 grid md:grid-cols-2 gap-8">
+        <div class="rounded-3xl border border-slate-200 p-6 bg-white">
+          <h3 class="font-semibold">Mastic Gutter Coil</h3>
+          <p class="mt-2 text-slate-600">20-year warranty on gutter coil used to make seamless gutters. Backed by Mastic’s VIP Limited Lifetime Warranty on most siding products.</p>
+        </div>
+        <div class="rounded-3xl border border-slate-200 p-6 bg-white">
+          <h3 class="font-semibold">Premium Gutter Guards</h3>
+          <p class="mt-2 text-slate-600">LeafBlaster Pro guards with a 40-year limited warranty, compatible with most gutter shapes and sizes. Installed with our workmanship guarantee.</p>
+        </div>
+        <div class="rounded-3xl border border-slate-200 p-6 bg-white">
+          <h3 class="font-semibold">Aluminum Gutter Guards</h3>
+          <p class="mt-2 text-slate-600">Rigid Flow aluminum perforated guards in 4ft sections. Hidden from view, effective against debris, and typically pay for themselves in 3–4 years.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service Areas -->
+  <section id="areas" class="scroll-mt-24 border-t border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 py-16 grid md:grid-cols-2 gap-10">
+      <div>
+        <h2 class="text-3xl font-bold tracking-tight">Service Areas</h2>
+        <p class="mt-3 text-slate-600">Proudly serving Richland, MS and surrounding areas and nearby communities.</p>
+        <ul class="mt-4 grid grid-cols-2 gap-2 text-slate-700 text-sm">
+          <li>• Rankin County</li>
+          <li>• Hinds County</li>
+          <li>• Madison County</li>
+          <li>• Scott County</li>
+          <li>• Simpson County</li>
+          <li>• Smith County</li>
+          <li>• Leake County</li>
+          <li>• Neshoba County</li>
+        </ul>
+      </div>
+      <div class="rounded-3xl border border-slate-200 p-6 bg-slate-50">
+        <h3 class="font-semibold">Hours</h3>
+        <p class="mt-2 text-slate-700">Mon–Fri: 8am–5pm • Sat: By appt</p>
+        <h3 class="mt-6 font-semibold">Insurance & Warranty</h3>
+        <p class="mt-2 text-slate-700">We carry full liability insurance and stand behind our workmanship with a 1-year service warranty.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- (Gallery, Reviews, Contact, Footer would follow here as in the previous version) -->
+
 </body>
 </html>
