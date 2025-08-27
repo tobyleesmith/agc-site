@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AGC Gutter Install</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white">
+  <div id="root"></div>
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    const { useEffect } = React;
+    function AGCGutterInstallSite() {
+      const handleSubmit = (e) => { e.preventDefault(); alert("Form would send via mailto."); };
+      const scrollToId = (id) => document.getElementById(id)?.scrollIntoView({behavior:"smooth"});
+      return (
+        <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white text-slate-800">
+          <header className="sticky top-0 z-50 backdrop-blur bg-white/70 border-b border-slate-200">
+            <div className="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
+              <span className="inline-flex items-center gap-2">
+                <img src='agc-logo.jpg' alt='AGC Logo' className='h-8 w-auto'/>
+                <span>AGC Gutter Install</span>
+              </span>
+            </div>
+          </header>
+          <section id="work" className="py-20 bg-slate-50">
+            <div className="mx-auto max-w-6xl px-4">
+              <h2 className="text-3xl md:text-4xl font-semibold">Recent Work</h2>
+              <div className="mt-10 grid md:grid-cols-3 gap-6">
+                
+    <div className="rounded-3xl border border-slate-200 bg-white overflow-hidden shadow-sm hover:shadow">
+      <img src="images/gallery/gallery1.jpg" alt="AGC Project" className="w-full h-48 object-cover"/>
+      <div className="p-5">
+        <h3 className="font-semibold">Recent Project</h3>
+        <p className="mt-1 text-sm text-slate-600">Installed seamless gutters & guards.</p>
+      </div>
+    </div>
+    
+    <div className="rounded-3xl border border-slate-200 bg-white overflow-hidden shadow-sm hover:shadow">
+      <img src="images/gallery/gallery2.jpg" alt="AGC Project" className="w-full h-48 object-cover"/>
+      <div className="p-5">
+        <h3 className="font-semibold">Recent Project</h3>
+        <p className="mt-1 text-sm text-slate-600">Installed seamless gutters & guards.</p>
+      </div>
+    </div>
+    
+    <div className="rounded-3xl border border-slate-200 bg-white overflow-hidden shadow-sm hover:shadow">
+      <img src="images/gallery/gallery3.jpg" alt="AGC Project" className="w-full h-48 object-cover"/>
+      <div className="p-5">
+        <h3 className="font-semibold">Recent Project</h3>
+        <p className="mt-1 text-sm text-slate-600">Installed seamless gutters & guards.</p>
+      </div>
+    </div>
+    
+    <div className="rounded-3xl border border-slate-200 bg-white overflow-hidden shadow-sm hover:shadow">
+      <img src="images/gallery/gallery4.jpg" alt="AGC Project" className="w-full h-48 object-cover"/>
+      <div className="p-5">
+        <h3 className="font-semibold">Recent Project</h3>
+        <p className="mt-1 text-sm text-slate-600">Installed seamless gutters & guards.</p>
+      </div>
+    </div>
+    
+    <div className="rounded-3xl border border-slate-200 bg-white overflow-hidden shadow-sm hover:shadow">
+      <img src="images/gallery/gallery5.jpg" alt="AGC Project" className="w-full h-48 object-cover"/>
+      <div className="p-5">
+        <h3 className="font-semibold">Recent Project</h3>
+        <p className="mt-1 text-sm text-slate-600">Installed seamless gutters & guards.</p>
+      </div>
+    </div>
+    
+    <div className="rounded-3xl border border-slate-200 bg-white overflow-hidden shadow-sm hover:shadow">
+      <img src="images/gallery/gallery6.jpg" alt="AGC Project" className="w-full h-48 object-cover"/>
+      <div className="p-5">
+        <h3 className="font-semibold">Recent Project</h3>
+        <p className="mt-1 text-sm text-slate-600">Installed seamless gutters & guards.</p>
+      </div>
+    </div>
+    
+              </div>
+            </div>
+          </section>
+        </div>
+      );
+    }
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<AGCGutterInstallSite/>);
+  </script>
+</body>
+</html>
