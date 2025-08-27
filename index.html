@@ -3,13 +3,14 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>AGC Gutter Install | Seamless Gutters, Guards & Cleaning</title>
-  <meta name="description" content="Family-owned gutter company in Richland, MS. Seamless gutters, premium guards, cleaning & repairs. Backed by strong product warranties and a 1-year service guarantee." />
+  <title>AGC Gutter Installs | Seamless Gutters & Gutter Guards</title>
+  <meta name="description" content="Family-owned gutter company in Richland, MS. Seamless gutters, premium guards, cleaning & repairs. Backed by a 1-year service warranty." />
   <link rel="icon" href="agc-logo.jpg" />
   <script src="https://cdn.tailwindcss.com"></script>
   <style>html{scroll-behavior:smooth}</style>
 </head>
-<body class="text-slate-800">
+<body class="text-slate-800 bg-white">
+
   <!-- Top Bar -->
   <div class="bg-slate-900 text-white text-sm">
     <div class="max-w-7xl mx-auto px-4 py-2 flex flex-wrap items-center justify-between gap-3">
@@ -26,42 +27,60 @@
     <div class="max-w-7xl mx-auto px-4">
       <div class="h-16 flex items-center justify-between">
         <a href="#home" class="flex items-center gap-3">
-          <img src=\"agc-logo.jpg\" class=\"h-12 w-auto object-contain\" alt=\"AGC Gutter Installs Logo\"/>
-          <span class="font-semibold">AGC Gutter Install</span>
+          <img src="agc-logo.jpg" alt="AGC Gutter Installs Logo" class="h-12 w-auto object-contain" />
+          <span class="sr-only">AGC Gutter Installs</span>
         </a>
         <nav class="hidden md:flex items-center gap-6 text-sm">
           <a href="#services" class="hover:text-slate-900">Services</a>
-          <a href="#why" class="hover:text-slate-900">Why Choose Us</a>
           <a href="#products" class="hover:text-slate-900">Products</a>
           <a href="#gallery" class="hover:text-slate-900">Gallery</a>
           <a href="#reviews" class="hover:text-slate-900">Reviews</a>
           <a href="#areas" class="hover:text-slate-900">Service Areas</a>
           <a href="#quote" class="rounded-xl border border-slate-300 px-3 py-1.5 hover:bg-slate-50">Contact</a>
         </nav>
-        <a href="https://www.facebook.com/AGCgutter?mibextid=LQQJ4d" target="_blank" class="ml-4 hidden md:inline text-blue-600 hover:underline">Facebook</a>
+        <div class="flex items-center gap-3">
+          <a href="https://www.facebook.com/AGCgutter?mibextid=LQQJ4d" target="_blank" class="hidden md:inline text-blue-600 hover:underline">Facebook</a>
+          <button id="menuBtn" class="md:hidden inline-flex items-center justify-center rounded-xl border border-slate-300 px-3 py-2" aria-label="Open menu" aria-expanded="false">☰</button>
+        </div>
+      </div>
+
+      <!-- Mobile dropdown -->
+      <div id="mobileMenu" class="hidden md:hidden pb-3">
+        <div class="flex flex-col gap-2 text-sm">
+          <a href="#services" class="px-2 py-2 rounded-lg hover:bg-slate-50">Services</a>
+          <a href="#products" class="px-2 py-2 rounded-lg hover:bg-slate-50">Products</a>
+          <a href="#gallery" class="px-2 py-2 rounded-lg hover:bg-slate-50">Gallery</a>
+          <a href="#reviews" class="px-2 py-2 rounded-lg hover:bg-slate-50">Reviews</a>
+          <a href="#areas" class="px-2 py-2 rounded-lg hover:bg-slate-50">Service Areas</a>
+          <a href="#quote" class="px-2 py-2 rounded-lg border border-slate-300">Contact</a>
+        </div>
       </div>
     </div>
   </header>
 
   <!-- Hero -->
-  <section id=\"home\" class=\"relative scroll-mt-24 bg-gradient-to-b from-brand-green/10 to-white\">
-    <div class=\"absolute inset-0 flex items-center justify-center opacity-5 pointer-events-none\">
-      <img src=\"agc-logo.jpg\" alt=\"AGC Logo Background\" class=\"max-w-md w-full h-auto\" />
+  <section id="home" class="relative scroll-mt-24 bg-gradient-to-b from-slate-50 to-white">
+    <!-- faint background logo; won't block clicks -->
+    <div class="absolute inset-0 flex items-center justify-center opacity-5 pointer-events-none">
+      <img src="agc-logo.jpg" alt="AGC Logo Background" class="max-w-md w-full h-auto" />
     </div>
-    <div class="max-w-7xl mx-auto px-4 pt-10 pb-16 grid md:grid-cols-2 gap-10 items-center">
+
+    <div class="relative max-w-7xl mx-auto px-4 pt-10 pb-16 grid md:grid-cols-2 gap-10 items-center">
       <div>
         <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight">Seamless Gutters & Premium Gutter Guards</h1>
-        <p class="mt-4 text-lg text-slate-600">Protect your roof, fascia and foundation. Professional installs, clean job sites, and a <strong>1-year service warranty</strong>.</p>
+        <p class="mt-4 text-lg text-slate-600">
+          Protect your roof, fascia and foundation. Professional installs, clean job sites, and a <strong>1-year service warranty</strong>.
+        </p>
         <div class="mt-6 flex flex-wrap gap-3">
           <a href="tel:+16017281748" class="rounded-2xl bg-slate-900 text-white px-6 py-3 font-medium hover:bg-slate-700">Call Now</a>
           <a href="#quote" class="rounded-2xl border border-slate-300 px-6 py-3 font-medium hover:bg-slate-50">Request Free Quote</a>
         </div>
       </div>
       <div class="grid grid-cols-2 gap-3">
-        <img src="images/gallery/gallery1.jpg" class="rounded-3xl h-48 md:h-60 w-full object-cover" alt="Gutter Guard"/>
-        <img src="images/gallery/gallery2.jpg" class="rounded-3xl h-48 md:h-60 w-full object-cover" alt="Gutter Guard"/>
-        <img src="images/gallery/gallery3.jpg" class="rounded-3xl h-48 md:h-60 w-full object-cover" alt="Seamless Gutter"/>
-        <img src="images/gallery/gallery4.jpg" class="rounded-3xl h-48 md:h-60 w-full object-cover" alt="Downspout"/>
+        <img src="images/gallery/gallery1.jpg" class="rounded-3xl h-48 md:h-60 w-full object-cover" alt="Gutter Guard">
+        <img src="images/gallery/gallery2.jpg" class="rounded-3xl h-48 md:h-60 w-full object-cover" alt="Gutter Guard">
+        <img src="images/gallery/gallery3.jpg" class="rounded-3xl h-48 md:h-60 w-full object-cover" alt="Seamless Gutter">
+        <img src="images/gallery/gallery4.jpg" class="rounded-3xl h-48 md:h-60 w-full object-cover" alt="Downspout">
       </div>
     </div>
   </section>
@@ -73,14 +92,14 @@
       <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
         <div class="rounded-3xl border border-slate-200 p-6">
           <h3 class="font-semibold">Seamless Gutters</h3>
-          <p class="mt-2 text-slate-600">Custom 5" and 6" aluminum gutters with a 20-year warranty on coil material.</p>
+          <p class="mt-2 text-slate-600">Custom 5&quot; and 6&quot; aluminum gutters with a 20-year warranty on coil material.</p>
         </div>
         <div class="rounded-3xl border border-slate-200 p-6">
           <h3 class="font-semibold">Gutter Guards</h3>
-          <p class="mt-2 text-slate-600">Premium LeafBlaster Pro guards with 40-year limited warranty. Aluminum options also available.</p>
+          <p class="mt-2 text-slate-600">Premium LeafBlaster Pro (40-year limited) and aluminum options to keep debris out.</p>
         </div>
         <div class="rounded-3xl border border-slate-200 p-6">
-          <h3 class="font-semibold">Repairs & Tune‑Ups</h3>
+          <h3 class="font-semibold">Repairs & Tune-Ups</h3>
           <p class="mt-2 text-slate-600">Leak fixes, resealing, hanger upgrades, downspout rerouting.</p>
         </div>
         <div class="rounded-3xl border border-slate-200 p-6">
@@ -98,16 +117,55 @@
       <div class="mt-8 grid md:grid-cols-2 gap-8">
         <div class="rounded-3xl border border-slate-200 p-6 bg-white">
           <h3 class="font-semibold">Mastic Gutter Coil</h3>
-          <p class="mt-2 text-slate-600">20-year warranty on gutter coil used to make seamless gutters. Backed by Mastic’s VIP Limited Lifetime Warranty on most siding products.</p>
+          <p class="mt-2 text-slate-600">20-year warranty on gutter coil used to make seamless gutters. Mastic backs many products with VIP Limited Lifetime coverage.</p>
         </div>
         <div class="rounded-3xl border border-slate-200 p-6 bg-white">
           <h3 class="font-semibold">Premium Gutter Guards</h3>
-          <p class="mt-2 text-slate-600">LeafBlaster Pro guards with a 40-year limited warranty, compatible with most gutter shapes and sizes. Installed with our workmanship guarantee.</p>
+          <p class="mt-2 text-slate-600">LeafBlaster Pro guards with a 40-year limited warranty, compatible with most gutter shapes and sizes.</p>
         </div>
         <div class="rounded-3xl border border-slate-200 p-6 bg-white">
-          <h3 class="font-semibold">Aluminum Gutter Guards</h3>
-          <p class="mt-2 text-slate-600">Rigid Flow aluminum perforated guards in 4ft sections. Hidden from view, effective against debris, and typically pay for themselves in 3–4 years.</p>
+          <h3 class="font-semibold">Aluminum Guards (Rigid Flow)</h3>
+          <p class="mt-2 text-slate-600">Perforated aluminum in 4ft sections—hidden from view and effective against debris; typically pays for itself in 3–4 years.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section id="gallery" class="scroll-mt-24 border-t border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 py-16">
+      <div class="flex items-end justify-between">
+        <h2 class="text-3xl font-bold tracking-tight">Recent Work</h2>
+        <a href="#quote" class="text-sm text-slate-600 hover:text-slate-900">Need similar work? Contact us →</a>
+      </div>
+      <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <img src="images/gallery/gallery1.jpg" class="rounded-3xl w-full h-48 object-cover" alt="Project 1">
+        <img src="images/gallery/gallery2.jpg" class="rounded-3xl w-full h-48 object-cover" alt="Project 2">
+        <img src="images/gallery/gallery3.jpg" class="rounded-3xl w-full h-48 object-cover" alt="Project 3">
+        <img src="images/gallery/gallery4.jpg" class="rounded-3xl w-full h-48 object-cover" alt="Project 4">
+        <img src="images/gallery/gallery5.jpg" class="rounded-3xl w-full h-48 object-cover" alt="Project 5">
+        <img src="images/gallery/gallery6.jpg" class="rounded-3xl w-full h-48 object-cover" alt="Project 6">
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews -->
+  <section id="reviews" class="scroll-mt-24 border-t border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 py-16">
+      <h2 class="text-3xl font-bold tracking-tight">Customer Reviews</h2>
+      <div class="mt-8 grid md:grid-cols-3 gap-6">
+        <blockquote class="rounded-3xl border border-slate-200 p-6 bg-white">
+          <p class="text-slate-700">“Showed up on time, did great work, and cleaned up perfectly. Highly recommend.”</p>
+          <footer class="mt-3 text-sm text-slate-500">— Google Reviewer</footer>
+        </blockquote>
+        <blockquote class="rounded-3xl border border-slate-200 p-6 bg-white">
+          <p class="text-slate-700">“Our basement stayed dry after the first heavy rain. Excellent gutter guard install.”</p>
+          <footer class="mt-3 text-sm text-slate-500">— Google Reviewer</footer>
+        </blockquote>
+        <blockquote class="rounded-3xl border border-slate-200 p-6 bg-white">
+          <p class="text-slate-700">“Fair price and quick turnaround. Will use again.”</p>
+          <footer class="mt-3 text-sm text-slate-500">— Google Reviewer</footer>
+        </blockquote>
       </div>
     </div>
   </section>
@@ -138,7 +196,58 @@
     </div>
   </section>
 
-  <!-- (Gallery, Reviews, Contact, Footer would follow here as in the previous version) -->
+  <!-- Quote / Contact -->
+  <section id="quote" class="scroll-mt-24 border-t border-slate-200 bg-white">
+    <div class="max-w-7xl mx-auto px-4 py-16 grid md:grid-cols-2 gap-10">
+      <div>
+        <h2 class="text-3xl font-bold tracking-tight">Get a Free Quote</h2>
+        <p class="mt-3 text-slate-600">Call, email, or send the form and we’ll respond the same day.</p>
+        <div class="mt-6 space-y-2">
+          <div><span class="text-slate-500">Phone:</span> <a class="font-semibold hover:underline" href="tel:+16017281748">601-728-1748</a></div>
+          <div><span class="text-slate-500">Email:</span> <a class="font-semibold hover:underline" href="mailto:agcgutterinstall@gmail.com">agcgutterinstall@gmail.com</a></div>
+        </div>
+      </div>
 
+      <!-- Simple form: shows thank-you without backend -->
+      <form class="bg-slate-50 rounded-3xl p-6" onsubmit="event.preventDefault(); this.reset(); document.getElementById('thanks').classList.remove('hidden');">
+        <div class="grid gap-4">
+          <input class="rounded-xl border border-slate-300 px-3 py-2" type="text" name="name" placeholder="Name" required>
+          <input class="rounded-xl border border-slate-300 px-3 py-2" type="email" name="email" placeholder="Email" required>
+          <input class="rounded-xl border border-slate-300 px-3 py-2" type="tel" name="phone" placeholder="Phone" required>
+          <textarea class="rounded-xl border border-slate-300 px-3 py-2" name="message" rows="4" placeholder="Tell us about your project" required></textarea>
+          <button class="rounded-2xl bg-slate-900 text-white px-5 py-3 font-medium hover:bg-slate-700" type="submit">Send</button>
+        </div>
+        <p id="thanks" class="hidden mt-3 text-sm text-green-600">Thanks! We’ll be in touch shortly.</p>
+      </form>
+    </div>
+  </section>
+
+  <footer class="border-t border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 py-8 text-sm text-slate-500 flex flex-wrap items-center justify-between gap-3">
+      <span>© <span id="year"></span> AGC Gutter Installs</span>
+      <a href="#home" class="hover:text-slate-800">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile menu toggle
+    const btn = document.getElementById('menuBtn');
+    const menu = document.getElementById('mobileMenu');
+    if (btn && menu) {
+      btn.addEventListener('click', () => {
+        const isHidden = menu.classList.contains('hidden');
+        menu.classList.toggle('hidden', !isHidden);
+        btn.setAttribute('aria-expanded', String(isHidden));
+      });
+      // Close menu after clicking a link
+      menu.querySelectorAll('a[href^="#"]').forEach(a =>
+        a.addEventListener('click', () => menu.classList.add('hidden'))
+      );
+    }
+  </script>
 </body>
 </html>
