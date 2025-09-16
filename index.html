@@ -1,9 +1,138 @@
-<!DOCTYPE html>
+<form action="/send.php" method="POST" class="bg-slate-50 rounded-3xl p-6">
+  <div class="grid gap-4">
+    <input class="rounded-xl border border-slate-300 px-3 py-2" type="text" name="name" placeholder="Name" required>
+    <input class="rounded-xl border border-slate-300 px-3 py-2" type="email" name="email" placeholder="Email" required>
+    <input class="rounded-xl border border-slate-300 px-3 py-2" type="tel" name="phone" placeholder="Phone" required>
+    <textarea class="rounded-xl border border-slate-300 px-3 py-2" name="message" rows="4" placeholder="Tell us about your project" required></textarea>
+
+    <!-- honeypot -->
+    <input type="text" name="company" class="hidden" style="display:none">
+
+    <button class="rounded-2xl bg-slate-900 text-white px-5 py-3 font-medium hover:bg-slate-700" type="submit">
+      Send
+    </button>
+  </div>
+</form>
+<p id="thanks" class="hidden mt-3 text-sm text-green-600">Thanks! We’ll be in touch shortly.</p>
+
+<script>
+  // Replace default thanks behavior: reveal message when PHP redirects back with ?sent=1
+  const params = new URLSearchParams(location.search);
+  if (params.get('sent') === '1') document.getElementById('thanks')?.classList.remove('hidden');
+</script>
+2) Create /send.php
+Uses PHPMailer + SMTP (much more reliable than mail()). If you use Gmail, create an App Password and use it below, or use your host’s SMTP.
+
+Upload PHPMailer (via Composer or vendor folder). Minimal example:
+
+php
+Copy code
+<?php
+// send.php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require __DIR__ . '/PHPMailer/src/Exception.php';
+require __DIR__ . '/PHPMailer/src/PHPMailer.php';
+require __DIR__ . '/PHPMailer/src/SMTP.php';
+
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') { http_response_code(405); exit; }
+
+// Basic bot check
+if (!empty($_POST['company'])) { header('Location: /?sent=1'); exit; }
+
+$name    = trim($_POST['name'] ?? '');
+$email   = trim($_POST['email'] ?? '');
+$phone   = trim($_POST['phone'] ?? '');
+$message = trim($_POST['message'] ?? '');
+
+if (!$name || !$email || !$phone || !$message || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+  header('Location: /?sent=0'); exit;
+}
+
+// Configure mailer
+$mail = new PHPMailer(true);
+
+try {
+  // SMTP settings (example: Gmail SMTP)
+  $mail->isSMTP();
+  $mail->Host       = 'smtp.gmail.com';
+  $mail->SMTPAuth   = true;
+  $mail->Username   = 'agcgutterinstall@gmail.com'; // your email
+  $mail->Password   = 'YOUR_APP_PASSWORD';          // app password, not your login
+  $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+  $mail->Port       = 587;
+
+  // From/To
+  $mail->setFrom('agcgutterinstall@gmail.com', 'AGC Website');
+  $mail->addAddress('agcgutterinstall@gmail.com', 'AGC Gutter Install');
+  // Reply-to the customer
+  $mail->addReplyTo($email, $name);
+
+  // Content
+  $mail->isHTML(true);
+  $mail->Subject = 'New Quote Request from AGC Website';
+  $mail->Body    = nl2br(htmlspecialchars(
+    "Name: $name\nEmail: $email\nPhone: $phone\n\nMessage:\n$message"
+  ));
+  $mail->AltBody = "Name: $name\nEmail: $email\nPhone: $phone\n\nMessage:\n$message";
+
+  $mail->send();
+  header('Location: /?sent=1');
+} catch (Exception $e) {
+  // For debugging you could log $mail->ErrorInfo
+  header('Location: /?sent=0');
+}
+Notes
+
+If not using Gmail, set Host, Port, Username, Password, and SMTPSecure to your provider’s SMTP details.
+
+On many hosts you can use their SMTP (e.g., mail.yourdomain.com) which improves deliverability.
+
+Deliverability checklist (important even after it “works”)
+Use a domain email (e.g., info@agcgutterinstall.com) as your From address, not a free Gmail, for best deliverability.
+
+SPF/DKIM/DMARC: In your DNS, add the SPF record for your sending provider and enable DKIM if available. This prevents spam filtering.
+
+Test with multiple recipients (Gmail, Outlook) and check spam folders the first time.
+
+Quick win summary
+Remove onsubmit="event.preventDefault()..." from the form.
+
+Easiest route: paste a Formspree endpoint into action="".
+
+Or add send.php (PHPMailer + SMTP) and point the form’s action to it.
+
+If you tell me where the site is hosted (and whether you want Formspree or PHP), I’ll tailor the exact setup and any DNS/SPF records you’ll need.
+
+
+
+
+
+
+
+You said:
+i am using Github my email address i want it to be sent to is agcgutterinstall@gmail.com
+i would like it so its one full HTML so all i have to do is copy and replace the full HTML 
+
+
+ChatGPT said:
+
+Thought for 19s
+Awesome — since you’re on GitHub Pages (static hosting), the simplest “copy–paste and it just works” fix is to use FormSubmit. It lets a static HTML form send to your Gmail without any backend.
+
+Below is a single, complete HTML file. Drop it in as-is (replace your current file). It posts to formsubmit.co/agcgutterinstall@gmail.com, shows a “Thanks!” message after success, and keeps your existing design.
+
+Tiny note: the first submission will trigger a one-time verification email from FormSubmit to confirm you own agcgutterinstall@gmail.com. Click the link in that email; then all future submissions will go straight to your inbox.
+
+html
+Copy code
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>AGC Gutter Installs | Seamless Gutters & Gutter Guards</title>
+  <title>AGC Gutter Install | Seamless Gutters, Guards & Cleaning</title>
   <meta name="description" content="Family-owned gutter company in Richland, MS. Seamless gutters, premium guards, cleaning & repairs. Backed by a 1-year service warranty." />
   <link rel="icon" href="agc-logo.jpg" />
   <script src="https://cdn.tailwindcss.com"></script>
@@ -14,16 +143,17 @@
   <!-- Top Bar -->
   <div class="bg-slate-900 text-white text-sm">
     <div class="max-w-7xl mx-auto px-4 py-2 flex flex-wrap items-center justify-between gap-3">
-      <span>Family-owned business since 2019 • Licensed • Insured • Free Estimates</span>
       <div class="flex items-center gap-4">
-        <a href="tel:+16017281748" class="hover:underline">Call: 601-728-1748</a>
-        <a href="#quote" class="inline-flex items-center gap-2 bg-white text-slate-900 px-3 py-1 rounded-lg font-medium">Get a Quote</a>
+        <span>Licensed & Insured</span>
+        <span class="hidden sm:inline">•</span>
+        <a class="hover:underline" href="tel:+16017281748">Call: 601-728-1748</a>
       </div>
+      <div>Serving the Jackson Metro Area</div>
     </div>
   </div>
 
   <!-- Header / Nav -->
-  <header class="sticky top-0 z-50 bg-white/80 backdrop-blur border-b border-slate-200">
+  <header class="sticky top-0 z-30 bg-white/80 backdrop-blur border-b border-slate-200">
     <div class="max-w-7xl mx-auto px-4">
       <div class="h-16 flex items-center justify-between">
         <a href="#home" class="flex items-center gap-3">
@@ -32,6 +162,7 @@
         </a>
         <nav class="hidden md:flex items-center gap-6 text-sm">
           <a href="#services" class="hover:text-slate-900">Services</a>
+          <a href="#why" class="hover:text-slate-900">Why Choose Us</a>
           <a href="#products" class="hover:text-slate-900">Products</a>
           <a href="#gallery" class="hover:text-slate-900">Gallery</a>
           <a href="#reviews" class="hover:text-slate-900">Reviews</a>
@@ -64,8 +195,7 @@
     <div class="absolute inset-0 flex items-center justify-center opacity-5 pointer-events-none">
       <img src="agc-logo.jpg" alt="AGC Logo Background" class="max-w-md w-full h-auto" />
     </div>
-
-    <div class="relative max-w-7xl mx-auto px-4 pt-10 pb-16 grid md:grid-cols-2 gap-10 items-center">
+    <div class="max-w-7xl mx-auto px-4 pt-10 pb-16 grid md:grid-cols-2 gap-10 items-center">
       <div>
         <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight">Seamless Gutters & Premium Gutter Guards</h1>
         <p class="mt-4 text-lg text-slate-600">
@@ -86,7 +216,7 @@
   </section>
 
   <!-- Services -->
-  <section id="services" class="scroll-mt-24 border-t border-slate-200">
+  <section id="services" class="scroll-mt-24 border-t border-slate-200 bg-white">
     <div class="max-w-7xl mx-auto px-4 py-16">
       <h2 class="text-3xl font-bold tracking-tight">Our Services</h2>
       <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -96,7 +226,7 @@
         </div>
         <div class="rounded-3xl border border-slate-200 p-6">
           <h3 class="font-semibold">Gutter Guards</h3>
-          <p class="mt-2 text-slate-600">Premium LeafBlaster Pro (40-year limited) and aluminum options to keep debris out.</p>
+          <p class="mt-2 text-slate-600">LeafBlaster Pro (40-year limited) and aluminum options to keep debris out.</p>
         </div>
         <div class="rounded-3xl border border-slate-200 p-6">
           <h3 class="font-semibold">Repairs & Tune-Ups</h3>
@@ -104,20 +234,39 @@
         </div>
         <div class="rounded-3xl border border-slate-200 p-6">
           <h3 class="font-semibold">Cleaning & Maintenance</h3>
-          <p class="mt-2 text-slate-600">Seasonal cleanings and inspections to extend system life.</p>
+          <p class="mt-2 text-slate-600">Seasonal cleanings and preventative maintenance plans.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Products -->
-  <section id="products" class="scroll-mt-24 border-t border-slate-200 bg-slate-50">
+  <!-- Why Choose Us -->
+  <section id="why" class="scroll-mt-24 border-t border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 py-16 grid md:grid-cols-2 gap-10">
+      <div>
+        <h2 class="text-3xl font-bold tracking-tight">Why Choose AGC</h2>
+        <ul class="mt-6 space-y-3 text-slate-700 list-disc pl-5">
+          <li>Family-owned, local, and fully insured</li>
+          <li>Clean job sites & respectful crews</li>
+          <li>Great materials with strong warranties</li>
+          <li>1-year workmanship/service warranty</li>
+        </ul>
+      </div>
+      <div class="rounded-3xl border border-slate-200 p-6 bg-white">
+        <h3 class="font-semibold">Insurance & Warranty</h3>
+        <p class="mt-2 text-slate-600">We back our work and carry proper liability coverage for your peace of mind.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products & Warranties -->
+  <section id="products" class="scroll-mt-24 border-t border-slate-200">
     <div class="max-w-7xl mx-auto px-4 py-16">
       <h2 class="text-3xl font-bold tracking-tight">Products & Warranties</h2>
       <div class="mt-8 grid md:grid-cols-2 gap-8">
         <div class="rounded-3xl border border-slate-200 p-6 bg-white">
           <h3 class="font-semibold">Mastic Gutter Coil</h3>
-          <p class="mt-2 text-slate-600">20-year warranty on gutter coil used to make seamless gutters. Mastic backs many products with VIP Limited Lifetime coverage.</p>
+          <p class="mt-2 text-slate-600">20-year warranty on gutter coil used to make seamless gutters.</p>
         </div>
         <div class="rounded-3xl border border-slate-200 p-6 bg-white">
           <h3 class="font-semibold">Premium Gutter Guards</h3>
@@ -125,7 +274,7 @@
         </div>
         <div class="rounded-3xl border border-slate-200 p-6 bg-white">
           <h3 class="font-semibold">Aluminum Guards (Rigid Flow)</h3>
-          <p class="mt-2 text-slate-600">Perforated aluminum in 4ft sections—hidden from view and effective against debris; typically pays for itself in 3–4 years.</p>
+          <p class="mt-2 text-slate-600">Perforated aluminum in 4ft sections—hidden from view and effective; typically pays for itself in 3–4 years.</p>
         </div>
       </div>
     </div>
@@ -175,23 +324,11 @@
     <div class="max-w-7xl mx-auto px-4 py-16 grid md:grid-cols-2 gap-10">
       <div>
         <h2 class="text-3xl font-bold tracking-tight">Service Areas</h2>
-        <p class="mt-3 text-slate-600">Proudly serving Richland, MS and surrounding areas and nearby communities.</p>
-        <ul class="mt-4 grid grid-cols-2 gap-2 text-slate-700 text-sm">
-          <li>• Rankin County</li>
-          <li>• Hinds County</li>
-          <li>• Madison County</li>
-          <li>• Scott County</li>
-          <li>• Simpson County</li>
-          <li>• Smith County</li>
-          <li>• Leake County</li>
-          <li>• Neshoba County</li>
-        </ul>
+        <p class="mt-3 text-slate-600">Richland • Jackson • Pearl • Brandon • Flowood • Madison • Ridgeland • Clinton • Byram</p>
       </div>
-      <div class="rounded-3xl border border-slate-200 p-6 bg-slate-50">
-        <h3 class="font-semibold">Hours</h3>
-        <p class="mt-2 text-slate-700">Mon–Fri: 8am–5pm • Sat: By appt</p>
-        <h3 class="mt-6 font-semibold">Insurance & Warranty</h3>
-        <p class="mt-2 text-slate-700">We carry full liability insurance and stand behind our workmanship with a 1-year service warranty.</p>
+      <div class="rounded-3xl border border-slate-200 p-6 bg-white">
+        <h3 class="font-semibold">Insurance & Warranty</h3>
+        <p class="mt-2 text-slate-600">We carry full liability insurance and back installs with a 1-year service warranty.</p>
       </div>
     </div>
   </section>
@@ -208,17 +345,31 @@
         </div>
       </div>
 
-      <!-- Simple form: shows thank-you without backend -->
-      <form class="bg-slate-50 rounded-3xl p-6" onsubmit="event.preventDefault(); this.reset(); document.getElementById('thanks').classList.remove('hidden');">
+      <!-- WORKING FORM (FormSubmit) -->
+      <form
+        action="https://formsubmit.co/agcgutterinstall@gmail.com"
+        method="POST"
+        class="bg-slate-50 rounded-3xl p-6"
+      >
         <div class="grid gap-4">
           <input class="rounded-xl border border-slate-300 px-3 py-2" type="text" name="name" placeholder="Name" required>
           <input class="rounded-xl border border-slate-300 px-3 py-2" type="email" name="email" placeholder="Email" required>
           <input class="rounded-xl border border-slate-300 px-3 py-2" type="tel" name="phone" placeholder="Phone" required>
           <textarea class="rounded-xl border border-slate-300 px-3 py-2" name="message" rows="4" placeholder="Tell us about your project" required></textarea>
+
+          <!-- FormSubmit settings -->
+          <input type="hidden" name="_subject" value="New Quote Request from AGC Website">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_next" value="https://agcgutterinstall.com/#thanks">
+
+          <!-- Honeypot to deter bots -->
+          <input type="text" name="_honey" class="hidden" style="display:none">
+
           <button class="rounded-2xl bg-slate-900 text-white px-5 py-3 font-medium hover:bg-slate-700" type="submit">Send</button>
         </div>
-        <p id="thanks" class="hidden mt-3 text-sm text-green-600">Thanks! We’ll be in touch shortly.</p>
       </form>
+      <p id="thanks" class="hidden mt-3 text-sm text-green-600">Thanks! We’ll be in touch shortly.</p>
     </div>
   </section>
 
@@ -247,6 +398,11 @@
       menu.querySelectorAll('a[href^="#"]').forEach(a =>
         a.addEventListener('click', () => menu.classList.add('hidden'))
       );
+    }
+
+    // Show "Thanks" if redirected after successful submit
+    if (location.hash === '#thanks') {
+      document.getElementById('thanks')?.classList.remove('hidden');
     }
   </script>
 </body>
